@@ -1,12 +1,12 @@
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
-// Укажите токен вашего бота
-const token = '6702238393:AAFFxPI7bojjaH83ThPhU21dBS_N4kWtGQE';
 
-// Создайте экземпляр бота
+const token = '************************';
+
+
 const bot = new TelegramBot(token, {polling: true});
 
-// Обработчик команды /start
+
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   console.log(`${msg.chat.first_name}:${chatId}`)
@@ -47,7 +47,7 @@ bot.onText(/Получить список клиентов/, (msg) => {
   
   
   // Отправка HTTP GET запроса на сервер
-  axios.get('http://davaj.arcerdo.site/api/getUserRequests')
+  axios.get('http://davaj.arcerdo.site/api/*')
     .then((response) => {
       // Фильтрация данных из ответа сервера
 
@@ -60,11 +60,7 @@ bot.onText(/Получить список клиентов/, (msg) => {
 
 
       const filteredData = response.data.filter((item) => {
-        // Ваш код фильтрации данных
-        // В примере предполагается, что ответ сервера - массив объектов,
-        // и фильтрация происходит по определенным условиям
-        //console.log(item.message)
-        // return item.someProperty === 'someValue';
+          //Добавить фильтр
         return item
       });
       
@@ -109,13 +105,11 @@ bot.on('callback_query', (query) => {
             ]
           }
         };
-        axios.get('http://davaj.arcerdo.site/api/getUserRequests')
+        axios.get('http://davaj.arcerdo.site/api/*')
         .then((response) => {
 
           const filteredData = response.data.filter((item) => {
-            // Ваш код фильтрации данных
-            // В примере предполагается, что ответ сервера - массив объектов,
-            // и фильтрация происходит по определенным условиям
+            //Добавить фильтр
             //console.log(item.message)
             // return item.someProperty === 'someValue';
             return item
